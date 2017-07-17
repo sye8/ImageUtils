@@ -1,5 +1,3 @@
-package sye8.imageUtils;
-
 /*
  * MIT License
  * 
@@ -25,7 +23,7 @@ package sye8.imageUtils;
  */
 
 /**
- * Command line tools for image format conversion, compression and resizing
+ * Command line tool for image format conversion, compression and resizing
  * 
  * @author yesifan
  *
@@ -39,8 +37,8 @@ public class Main {
 	 * @param s the argument to look for
 	 * @return the index of the argument or -1 if not found
 	 */
-    static int argsLookup(String[] arr, String s){
-		for(int i = 1; i < arr.length; i++){
+    private static int argsLookup(String[] arr, String s){
+		for(int i = 0; i < arr.length; i++){
 			if(arr[i].equals(s)){
 				return i;
 			}
@@ -49,14 +47,15 @@ public class Main {
 	}
 	
 	/**
+	 * Main method
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		if(argsLookup(args, "-supportedTypes") != -1){
+		if(argsLookup(args, "-support") != -1){
 			ImageUtils.getSupoortedTypes();
+			System.exit(0);
 		}
-		
 	}
 
 }

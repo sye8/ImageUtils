@@ -1,5 +1,3 @@
-package sye8.imageUtils;
-
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
@@ -244,5 +242,7 @@ public class ImageUtils {
 
 		set.clear();
 	}
+	
+
 	
 }
