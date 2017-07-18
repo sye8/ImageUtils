@@ -42,6 +42,7 @@ import javax.imageio.stream.ImageOutputStream;
 
 /**
  * Static methods for loading, converting and scaling images
+ * Only requires JRE System Library, no other dependencies.
  * Supported read formats: [jpg, bmp, gif, png, wbmp, jpeg]
  * Supported write formats: [jpg, bmp, gif, png, wbmp, jpeg]
  * 
@@ -179,7 +180,6 @@ public class ImageUtils {
 		//Get suitable Image Writer
 		Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName(outPath.substring(outPath.indexOf('.')+1));
 		if(!iterator.hasNext()){
-			System.out.println("Image writer for input image format not found!");
 			throw new IllegalStateException("Writers Not Found");
 		}
 		ImageWriter imageWriter = iterator.next();
