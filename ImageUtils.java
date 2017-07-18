@@ -173,7 +173,11 @@ public class ImageUtils {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public static void imageCompression(String inPath, int size, String outPath) throws IllegalStateException, IOException{
+	public static void imageCompression(String inPath, int size, String outPath) throws IllegalStateException, IOException, IllegalArgumentException{
+		//If the output format is not the same as input format
+		if(!(inPath.substring(outPath.indexOf('.')+1).equals(outPath.substring(outPath.indexOf('.')+1)))){
+			throw new IllegalArgumentException("Output format must be the same as input format");
+		}
 		//Load input image
 		BufferedImage input = loadImage(inPath);
 		

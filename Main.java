@@ -63,7 +63,7 @@ public class Main {
 	 * -maintainRatio [inPath] [width] [outPath] resize and convert image by entering width while aspect ratio is maintained
 	 * 
 	 * -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
-	 * 												Note: This method doesn't convert the image
+	 * Note: Compress doesn't convert the image
 	 * 
 	 * @param args
 	 */
@@ -124,6 +124,8 @@ public class Main {
 				ImageUtils.imageCompression(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal size");
+			} catch (IllegalArgumentException e) {
+				System.out.println("Output format must be the same as input format");
 			} catch (IllegalStateException e) {
 				System.out.println("Image writer for input image format not found");
 			} catch (IOException e) {
