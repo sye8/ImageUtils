@@ -20,5 +20,5 @@ Only requires JRE System Library, no other dependencies
 	 * -maintainRatio [inPath] [width] [outPath] resize and convert image by entering width while aspect ratio is maintained
 	 * 
 	 * -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
-	 * 												Note: This method doesn't convert the image
+	 * Note: Compress doesn't convert the image
 	 * 
