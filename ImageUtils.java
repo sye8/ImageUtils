@@ -178,8 +178,14 @@ public class ImageUtils {
 		if(!(inPath.substring(inPath.indexOf('.')+1).equals(outPath.substring(outPath.indexOf('.')+1)))){
 			throw new IllegalArgumentException("Output format must be the same as input format");
 		}
+		//Check if required compression size if smaller than original
+		File in = new File(inPath);
+		if(in.length() < size){
+			System.out.println("Compression will not be performed since original file size is smaller than specified compression size");
+			return;
+		}
 		//Load input image
-		BufferedImage input = loadImage(inPath);
+		BufferedImage input = ImageIO.read(in);
 		
 		//Get suitable Image Writer
 		Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName(outPath.substring(outPath.indexOf('.')+1));
