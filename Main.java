@@ -36,9 +36,9 @@ public class Main {
 	/**
 	 * Looks up argument
 	 * 
-	 * @param arr the argument array
-	 * @param s the argument to look for
-	 * @return the index of the argument or -1 if not found
+	 * @param arr The argument array
+	 * @param s The argument to look for
+	 * @return The index of the argument or -1 if not found
 	 */
     private static int argsLookup(String[] arr, String s){
 		for(int i = 0; i < arr.length; i++){

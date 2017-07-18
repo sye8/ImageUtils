@@ -56,8 +56,8 @@ public class ImageUtils {
 	 * Load and return a BufferedImage object with filename/path
 	 * Includes try/catch
 	 * 
-	 * @param filename
-	 * @return a loaded BufferedImage
+	 * @param Filename
+	 * @return A loaded BufferedImage
 	 */
 	public static BufferedImage loadImage(String filename){
 		try{
@@ -168,8 +168,7 @@ public class ImageUtils {
 	 * 
 	 * @param inPath The original image path
 	 * @param size The desired size, in bytes
-	 * @param outPath The output path. 
-	 *				  Note: Only same type compression is supported
+	 * @param outPath The output path. Note: Only same type compression is supported
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
