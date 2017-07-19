@@ -24,4 +24,4 @@ Only requires JRE (Java SE 1.8) System Library, no other dependencies
 	 * 
 	 * -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
 	 * Note: Compress doesn't convert the image
-	 * 
+	 * Test Note: From tests so far, compression seems to support jpg only. Feedback welcomed
