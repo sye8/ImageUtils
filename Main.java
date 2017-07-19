@@ -121,6 +121,8 @@ public class Main {
 				ImageUtils.imageCompression(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal size");
+			} catch (UnsupportedOperationException e) {
+				System.out.println("Compression for input type not supported");
 			} catch (IllegalStateException e) {
 				System.out.println("Image writer for input image format not found");
 			} catch (IOException e) {

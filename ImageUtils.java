@@ -214,8 +214,8 @@ public class ImageUtils {
 			quality -= 0.025f;
 			if(quality < 0){
 				System.out.println("Sorry, cannot compress image under the size specified. Please choose a bigger size");
-				 outputStream.close();
-				 imageWriter.dispose();
+				outputStream.close();
+				imageWriter.dispose();
 				return;
 			}
 		}while(byteData.length > size);
