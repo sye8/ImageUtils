@@ -83,15 +83,6 @@ public class ImageUtils {
 		if(input == null){
 			throw new IOException("Input image not found");
 		}		
-		//If no scaling is required
-		if(scale == 1){
-			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
-				System.out.println("Conversion Complete!");
-			}else{
-				System.out.println("Output type not supported");
-			}
-			return;
-		}
 		
 		int outWidth = (int)(input.getWidth() * Math.sqrt(scale));
 		int outHeight = (int)(input.getHeight() * Math.sqrt(scale));
@@ -132,16 +123,7 @@ public class ImageUtils {
 		if(input == null){
 			throw new IOException("Input image not found");
 		}
-		//If no scaling is required
-		if(width == input.getWidth() && height == input.getHeight()){
-			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
-				System.out.println("Conversion Complete!");
-			}else{
-				System.out.println("Output type not supported");
-			}
-			return;
-		}
-		
+
 		//Creating the output image
 		BufferedImage output;
 		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
@@ -176,15 +158,6 @@ public class ImageUtils {
 		if(input == null){
 			throw new IOException("Input image not found");
 		}		
-		//If no scaling is required
-		if(width == input.getWidth() || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
-			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
-				System.out.println("Conversion Complete!");
-			}else{
-				System.out.println("Output type not supported");
-			}
-			return;
-		}
 		
 		double aspectRatio = (double)input.getWidth()/(double)input.getHeight();
 		int outHeight = (int)(width/aspectRatio);
