@@ -70,7 +70,7 @@ public class Main {
 	public static void main(String[] args) {
 		if(argsLookup(args, "-supportedTypes") != -1){
 			ImageUtils.getSupoortedTypes();
-			System.exit(0);
+			return;
 		}
 		//Scale and convert
 		int index = argsLookup(args, "-scale");
@@ -83,9 +83,8 @@ public class Main {
 				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
-			}finally{
-				System.exit(0);
 			}
+			return;
 		}
 		//Change size and convert
 		index = argsLookup(args, "-width&height");
@@ -98,9 +97,8 @@ public class Main {
 				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
-			}finally{
-				System.exit(0);
 			}
+			return;
 		}
 		//Maintain aspect ratio
 		index = argsLookup(args, "-maintainRatio");
@@ -113,9 +111,8 @@ public class Main {
 				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
-			}finally{
-				System.exit(0);
 			}
+			return;
 		}
 		//Image Compression
 		index = argsLookup(args, "-compress");
@@ -124,15 +121,12 @@ public class Main {
 				ImageUtils.imageCompression(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal size");
-			} catch (IllegalArgumentException e) {
-				System.out.println("Output format must be the same as input format");
 			} catch (IllegalStateException e) {
 				System.out.println("Image writer for input image format not found");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
-			}finally{
-				System.exit(0);
 			}
+			return;
 		}
 	}
 

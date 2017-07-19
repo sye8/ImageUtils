@@ -172,10 +172,11 @@ public class ImageUtils {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public static void imageCompression(String inPath, int size, String outPath) throws IllegalStateException, IOException, IllegalArgumentException{
+	public static void imageCompression(String inPath, int size, String outPath) throws IllegalStateException, IOException{
 		//If the output format is not the same as input format
 		if(!(inPath.substring(inPath.indexOf('.')+1).equals(outPath.substring(outPath.indexOf('.')+1)))){
-			throw new IllegalArgumentException("Output format must be the same as input format");
+			System.out.println("Output format must be the same as input format");
+			return;
 		}
 		//Check if required compression size if smaller than original
 		File in = new File(inPath);
@@ -194,7 +195,7 @@ public class ImageUtils {
 		ImageWriter imageWriter = iterator.next();
 		
 		float quality = 0.975f;
-		byte[] jpegData;
+		byte[] byteData;
 		ImageOutputStream outputStream;
 		
 		//Try compression
@@ -209,13 +210,19 @@ public class ImageUtils {
 			outputStream = ImageIO.createImageOutputStream(compressed);
 			imageWriter.setOutput(outputStream);
 			imageWriter.write(null, new IIOImage(input, null, null), imageWriteParam);
-			jpegData = compressed.toByteArray();
+			byteData = compressed.toByteArray();
 			quality -= 0.025f;
-		}while(jpegData.length > size);
+			if(quality < 0){
+				System.out.println("Sorry, cannot compress image under the size specified. Please choose a bigger size");
+				 outputStream.close();
+				 imageWriter.dispose();
+				return;
+			}
+		}while(byteData.length > size);
 		
 		//Generate output file
 		OutputStream out = new BufferedOutputStream(new FileOutputStream(outPath));
-		out.write(jpegData);
+		out.write(byteData);
 		
 	    //Closing everything
 	    outputStream.close();
