@@ -79,10 +79,9 @@ public class ImageUtils {
 	public static void resizeAndConvertImage(String inPath, double scale, String outPath) throws IOException{
 		//Getting the input image
 		BufferedImage input = loadImage(inPath);	
-		System.out.println(input);
 		//If file not found
 		if(input == null){
-			System.out.println("Image not found");
+			System.out.println("Failed to load image");
 			return;
 		}		
 		
@@ -123,7 +122,7 @@ public class ImageUtils {
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
-			System.out.println("Image not found");
+			System.out.println("Failed to load image");
 			return;
 		}
 
@@ -159,7 +158,7 @@ public class ImageUtils {
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
-			System.out.println("Image not found");
+			System.out.println("Failed to load image");
 			return;
 		}		
 		

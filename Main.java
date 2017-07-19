@@ -80,7 +80,9 @@ public class Main {
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal scale");
 			} catch (IOException e) {
-				System.out.println("Input or output path not found");
+				System.out.println("Output path not found");
+			} catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Insufficient arguments");
 			}
 			return;
 		}
@@ -92,7 +94,9 @@ public class Main {
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal width or height");
 			} catch (IOException e) {
-				System.out.println("Input or output path not found");
+				System.out.println("Output path not found");
+			} catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Insufficient arguments");
 			}
 			return;
 		}
@@ -104,7 +108,9 @@ public class Main {
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal width");
 			} catch (IOException e) {
-				System.out.println("Input or output path not found");
+				System.out.println("Output path not found");
+			} catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Insufficient arguments");
 			}
 			return;
 		}
@@ -120,7 +126,9 @@ public class Main {
 			} catch (IllegalStateException e) {
 				System.out.println("Image writer for input image format not found");
 			} catch (IOException e) {
-				System.out.println("Input or output path not found");
+				System.out.println("Output path not found");
+			} catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Insufficient arguments");
 			}
 			return;
 		}
