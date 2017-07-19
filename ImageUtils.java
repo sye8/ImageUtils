@@ -78,10 +78,12 @@ public class ImageUtils {
 	 */
 	public static void resizeAndConvertImage(String inPath, double scale, String outPath) throws IOException{
 		//Getting the input image
-		BufferedImage input = loadImage(inPath);		
+		BufferedImage input = loadImage(inPath);	
+		System.out.println(input);
 		//If file not found
 		if(input == null){
-			throw new IOException("Input image not found");
+			System.out.println("Image not found");
+			return;
 		}		
 		
 		int outWidth = (int)(input.getWidth() * Math.sqrt(scale));
@@ -121,7 +123,8 @@ public class ImageUtils {
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
-			throw new IOException("Input image not found");
+			System.out.println("Image not found");
+			return;
 		}
 
 		//Creating the output image
@@ -156,7 +159,8 @@ public class ImageUtils {
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
-			throw new IOException("Input image not found");
+			System.out.println("Image not found");
+			return;
 		}		
 		
 		double aspectRatio = (double)input.getWidth()/(double)input.getHeight();
