@@ -25,7 +25,7 @@ With extended support, supported formats are:
 - Supported write formats: [tiff, bmp, gif, tif, pgm, wbmp, jpeg, pam, pict, jpg, pct, iff, png, ppm, pnm, pbm]
 
 
-## Main class command line tool:
+## Main class command line tool (jar includes extended support):
 
 	 * Commands:
 	 * 
