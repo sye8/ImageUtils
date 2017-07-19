@@ -11,6 +11,7 @@ Only requires JRE (Java SE 1.8) System Library, no other dependencies
 - Supported write formats: [jpg, bmp, gif, png, wbmp, jpeg]
 
 Note: Compress doesn't convert the image
+
 Test Note: From tests so far, compression seems to support jpg only. Feedback welcomed
 
 
