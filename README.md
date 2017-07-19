@@ -37,5 +37,7 @@ With extended support, supported formats are:
 	 * 
 	 * -maintainRatio [inPath] [width] [outPath] resize and convert image by entering width while aspect ratio is maintained
 	 * 
+	 * -convert [inPath] [outPath] converts the image
+	 * 
 	 * -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
 	 * 
