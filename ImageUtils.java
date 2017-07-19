@@ -98,7 +98,7 @@ public class ImageUtils {
 		
 		//Creating the output image
 		BufferedImage output;
-		if(input.getType() == 0){
+		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
 			output = new BufferedImage(outWidth, outHeight, BufferedImage.TYPE_INT_RGB);
 		}else{
 			output = new BufferedImage(outWidth, outHeight, input.getType());
@@ -144,7 +144,7 @@ public class ImageUtils {
 		
 		//Creating the output image
 		BufferedImage output;
-		if(input.getType() == 0){
+		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
 			output = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		}else{
 			output = new BufferedImage(width, height, input.getType());
@@ -177,7 +177,7 @@ public class ImageUtils {
 			throw new IOException("Input image not found");
 		}		
 		//If no scaling is required
-		if(width == input.getWidth()){
+		if(width == input.getWidth() || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
 			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
 				System.out.println("Conversion Complete!");
 			}else{
@@ -239,7 +239,7 @@ public class ImageUtils {
 		}
 		ImageWriter imageWriter = iterator.next();
 		
-		float quality = 0.975f;
+		float quality = 0.99f;
 		byte[] byteData;
 		ImageOutputStream outputStream;
 		
@@ -256,7 +256,7 @@ public class ImageUtils {
 			imageWriter.setOutput(outputStream);
 			imageWriter.write(null, new IIOImage(input, null, null), imageWriteParam);
 			byteData = compressed.toByteArray();
-			quality -= 0.025f;
+			quality -= 0.01f;
 			if(quality < 0){
 				System.out.println("Sorry, cannot compress image under the size specified. Please choose a bigger size");
 				outputStream.close();
