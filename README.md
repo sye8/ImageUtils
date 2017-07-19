@@ -14,6 +14,16 @@ Note: Compress doesn't convert the image
 
 Test Note: From tests so far, compression seems to support jpg only. Feedback welcomed
 
+## Extended Support
+
+For extended image format support, try [TwelveMonkeys ImageIO](https://github.com/haraldk/TwelveMonkeys)
+
+With extended support, supported formats are:
+
+- Supported read formats: [psd, cur, tiff, bmp, gif, rgbe, tga, tif, wmf, ico, sgi, pgm, dcx, wbmp, jpeg, pam, pict, jpg, pct, pcx, svg, png, iff, ppm, pnm, thumbs db, icns, targa, pfm, hdr, pbm, thumbs]
+
+- Supported write formats: [tiff, bmp, gif, tif, pgm, wbmp, jpeg, pam, pict, jpg, pct, iff, png, ppm, pnm, pbm]
+
 
 ## Main class command line tool:
 
