@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-
 /*
  * MIT License
  * 
@@ -62,6 +61,8 @@ public class Main {
 	 * 
 	 * -maintainRatio [inPath] [width] [outPath] resize and convert image by entering width while aspect ratio is maintained
 	 * 
+	 * -convert [inPath] [outPath] converts the image
+	 * 
 	 * -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
 	 * Note: Compress doesn't convert the image
 	 * 
@@ -107,6 +108,18 @@ public class Main {
 				ImageUtils.resizeAndConvertImageMaintainAspectRatio(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal width");
+			} catch (IOException e) {
+				System.out.println("Output path not found");
+			} catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Insufficient arguments");
+			}
+			return;
+		}
+		//Image Conversion
+		index = argsLookup(args, "-convert");
+		if(index != -1){
+			try {
+				ImageUtils.resizeAndConvertImage(args[index+1], 1, args[index+2]);
 			} catch (IOException e) {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){
