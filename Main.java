@@ -79,8 +79,6 @@ public class Main {
 				ImageUtils.resizeAndConvertImage(args[index+1], Double.parseDouble(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal scale");
-			} catch (IllegalArgumentException e) {
-				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
 			}
@@ -93,8 +91,6 @@ public class Main {
 				ImageUtils.resizeAndConvertImage(args[index+1], Integer.parseInt(args[index+2]), Integer.parseInt(args[index+3]), args[index+4]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal width or height");
-			} catch (IllegalArgumentException e) {
-				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
 			}
@@ -107,8 +103,6 @@ public class Main {
 				ImageUtils.resizeAndConvertImageMaintainAspectRatio(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal width");
-			} catch (IllegalArgumentException e) {
-				System.out.println("Output Type not supported");
 			} catch (IOException e) {
 				System.out.println("Input or output path not found");
 			}

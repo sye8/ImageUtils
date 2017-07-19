@@ -76,18 +76,34 @@ public class ImageUtils {
 	 * @param outPath The output path. Image format will be extracted from this
 	 * @throws IOException
 	 */
-	public static void resizeAndConvertImage(String inPath, double scale, String outPath) throws IOException, IllegalArgumentException{
+	public static void resizeAndConvertImage(String inPath, double scale, String outPath) throws IOException{
 		//Getting the input image
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
 			throw new IOException("Input image not found");
 		}		
+		//If no scaling is required
+		if(scale == 1){
+			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
+				System.out.println("Conversion Complete!");
+			}else{
+				System.out.println("Output type not supported");
+			}
+			return;
+		}
+		
 		int outWidth = (int)(input.getWidth() * Math.sqrt(scale));
 		int outHeight = (int)(input.getHeight() * Math.sqrt(scale));
 		
 		//Creating the output image
-		BufferedImage output = new BufferedImage(outWidth, outHeight, input.getType());
+		BufferedImage output;
+		if(input.getType() == 0){
+			output = new BufferedImage(outWidth, outHeight, BufferedImage.TYPE_INT_RGB);
+		}else{
+			output = new BufferedImage(outWidth, outHeight, input.getType());
+		}
+		
 		Graphics2D g2d = output.createGraphics();
 		g2d.drawImage(input, 0, 0, outWidth, outHeight, null);
 	    g2d.dispose();
@@ -96,7 +112,7 @@ public class ImageUtils {
 	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
 	    	System.out.println("Conversion Complete!");
 	    }else{
-	    	throw new IllegalArgumentException("Output type not supported");
+	    	System.out.println("Output type not supported");
 	    }    
 	}
 	
@@ -109,16 +125,30 @@ public class ImageUtils {
 	 * @param outPath The output path. Image format will be extracted from this
 	 * @throws IOException
 	 */
-	public static void resizeAndConvertImage(String inPath, int width, int height, String outPath) throws IOException, IllegalArgumentException{
+	public static void resizeAndConvertImage(String inPath, int width, int height, String outPath) throws IOException{
 		//Getting the input image
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
 			throw new IOException("Input image not found");
-		}		
+		}
+		//If no scaling is required
+		if(width == input.getWidth() && height == input.getHeight()){
+			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
+				System.out.println("Conversion Complete!");
+			}else{
+				System.out.println("Output type not supported");
+			}
+			return;
+		}
 		
 		//Creating the output image
-		BufferedImage output = new BufferedImage(width, height, input.getType());
+		BufferedImage output;
+		if(input.getType() == 0){
+			output = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		}else{
+			output = new BufferedImage(width, height, input.getType());
+		}
 		Graphics2D g2d = output.createGraphics();
 		g2d.drawImage(input, 0, 0, width, height, null);
 	    g2d.dispose();
@@ -127,7 +157,7 @@ public class ImageUtils {
 	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
 	    	System.out.println("Conversion Complete!");
 	    }else{
-	    	throw new IllegalArgumentException("Output type not supported");
+	    	System.out.println("Output type not supported");
 	    }    
 	}
 	
@@ -146,11 +176,26 @@ public class ImageUtils {
 		if(input == null){
 			throw new IOException("Input image not found");
 		}		
+		//If no scaling is required
+		if(width == input.getWidth()){
+			if(ImageIO.write(input, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
+				System.out.println("Conversion Complete!");
+			}else{
+				System.out.println("Output type not supported");
+			}
+			return;
+		}
+		
 		double aspectRatio = (double)input.getWidth()/(double)input.getHeight();
 		int outHeight = (int)(width/aspectRatio);
 		
 		//Creating the output image
-		BufferedImage output = new BufferedImage(width, outHeight, input.getType());
+		BufferedImage output;
+		if(input.getType() == 0){
+			output = new BufferedImage(width, outHeight, BufferedImage.TYPE_INT_RGB);
+		}else{
+			output = new BufferedImage(width, outHeight, input.getType());
+		}
 		Graphics2D g2d = output.createGraphics();
 		g2d.drawImage(input, 0, 0, width, outHeight, null);
 	    g2d.dispose();
@@ -159,7 +204,7 @@ public class ImageUtils {
 	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
 	    	System.out.println("Conversion Complete!");
 	    }else{
-	    	throw new IllegalArgumentException("Output type not supported");
+	    	System.out.println("Output type not supported");
 	    }    
 	}
 	
