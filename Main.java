@@ -55,11 +55,10 @@ public class Main {
 	 * 
 	 * -supportedTypes: Show supported image types
 	 * 
-	 * -scale [inPath] [scale] [outPath] scale and convert and image
+	 * -scale [inPath] [scale] [outPath] scale and convert the image
 	 * 
-	 * -width&height [inPath] [width] [height] [outPath] convert image and resize into required height & width
-	 * 
-	 * -maintainRatio [inPath] [width] [outPath] resize and convert image by entering width while aspect ratio is maintained
+	 * -resize [inPath] [width] [height] [maintain aspect ratio (true/false)] [outPath] resize and convert the image
+	 * If user chooses to keep aspect ratio, then the image will be resized to best fill the space given, while keeping aspect ratio
 	 * 
 	 * -convert [inPath] [outPath] converts the image
 	 * 
@@ -87,33 +86,18 @@ public class Main {
 			}
 			return;
 		}
-		//Change size and convert
-		index = argsLookup(args, "-width&height");
+		//Resize and convert
+		index = argsLookup(args, "-resize");
 		if(index != -1){
 			try {
-				ImageUtils.resizeAndConvertImage(args[index+1], Integer.parseInt(args[index+2]), Integer.parseInt(args[index+3]), args[index+4]);
+				ImageUtils.resizeAndConvertImage(args[index+1], Integer.parseInt(args[index+2]), Integer.parseInt(args[index+3]), Boolean.parseBoolean(args[index+4]), args[index+5]);
 			} catch (NumberFormatException e) {
-				System.out.println("Illegal width or height");
+				System.out.println("Illegal width and/or height");
 			} catch (IOException e) {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Insufficient arguments");
 			}
-			return;
-		}
-		//Maintain aspect ratio
-		index = argsLookup(args, "-maintainRatio");
-		if(index != -1){
-			try {
-				ImageUtils.resizeAndConvertImageMaintainAspectRatio(args[index+1], Integer.parseInt(args[index+2]), args[index+3]);
-			} catch (NumberFormatException e) {
-				System.out.println("Illegal width");
-			} catch (IOException e) {
-				System.out.println("Output path not found");
-			} catch (ArrayIndexOutOfBoundsException e){
-				System.out.println("Insufficient arguments");
-			}
-			return;
 		}
 		//Image Conversion
 		index = argsLookup(args, "-convert");

@@ -95,21 +95,43 @@ public class ImageUtils {
 	}
 	
 	/**
-	 * Resize and convert an image based on width and height needed and output path
+	 * Resizes and convert image based on width, height and specification to keep aspect ratio or not. 
+	 * If aspect ratio is to be kept, then the image will be resized to best fill the space given, while keeping aspect ratio
 	 * 
 	 * @param inPath The original image path
 	 * @param width Output width
 	 * @param height Output height
+	 * @param maintainAspectRatio If the user want the output to keep the input aspect ratio
 	 * @param outPath The output path. Image format will be extracted from this
 	 * @throws IOException
 	 */
-	public static void resizeAndConvertImage(String inPath, int width, int height, String outPath) throws IOException{
+	public static void resizeAndConvertImage(String inPath, int width, int height, boolean maintainAspectRatio, String outPath) throws IOException{
 		//Getting the input image
 		BufferedImage input = loadImage(inPath);		
 		//If file not found
 		if(input == null){
 			System.out.println("Failed to load image");
 			return;
+		}
+		
+		//Calculate height and width if user ask to maintain aspect ratio
+		if(maintainAspectRatio){
+			int inputWidth = input.getWidth();
+			int inputHeight = input.getHeight();
+			double inAspectRatio = (double)(inputWidth)/(double)(inputHeight);
+			if(inAspectRatio != (double)(width)/(double)(height)){
+				if(inputWidth > inputHeight){
+					height = (int)(width / inAspectRatio);
+				}else if(inputWidth < inputHeight){
+					width = (int)(height * inAspectRatio);
+				}else{
+					if(width > height){
+						width = height;
+					}else if(width < height){
+						height  = width;
+					}
+				}
+			}
 		}
 
 		//Creating the output image
@@ -134,45 +156,6 @@ public class ImageUtils {
 		}
 		Graphics2D g2d = output.createGraphics();
 		g2d.drawImage(input, 0, 0, width, height, null);
-	    g2d.dispose();
-	    
-	    //Writing the output file
-	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
-	    	System.out.println("Conversion Complete!");
-	    }else{
-	    	System.out.println("Output type not supported");
-	    }    
-	}
-	
-	/**
-	 * Resize and convert an image based on width needed, original aspect ratio and output path
-	 * 
-	 * @param inPath The original image path
-	 * @param width Output width
-	 * @param outPath The output path. Image format will be extracted from this
-	 * @throws IOException
-	 */
-	public static void resizeAndConvertImageMaintainAspectRatio(String inPath, int width, String outPath) throws IOException{
-		//Getting the input image
-		BufferedImage input = loadImage(inPath);		
-		//If file not found
-		if(input == null){
-			System.out.println("Failed to load image");
-			return;
-		}		
-		
-		double aspectRatio = (double)input.getWidth()/(double)input.getHeight();
-		int outHeight = (int)(width/aspectRatio);
-		
-		//Creating the output image
-		BufferedImage output;
-		if(input.getType() == 0){
-			output = new BufferedImage(width, outHeight, BufferedImage.TYPE_INT_RGB);
-		}else{
-			output = new BufferedImage(width, outHeight, input.getType());
-		}
-		Graphics2D g2d = output.createGraphics();
-		g2d.drawImage(input, 0, 0, width, outHeight, null);
 	    g2d.dispose();
 	    
 	    //Writing the output file
