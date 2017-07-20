@@ -4,7 +4,7 @@
 
 Java class for image format conversion, compression and resizing, includes a command line tool
 
-Only requires JRE (Java SE 1.8) System Library, no other dependencies
+Only requires JRE (Java SE 1.8) System Library, provides support for formats below
 
 - Supported read formats: [jpg, bmp, gif, png, wbmp, jpeg]
 
