@@ -77,7 +77,7 @@ public class Main {
 		int index = argsLookup(args, "-scale");
 		if(index != -1){
 			try {
-				ImageUtils.resizeAndConvertImage(args[index+1], Double.parseDouble(args[index+2]), args[index+3]);
+				ImageUtils.scaleAndConvertImage(args[index+1], Double.parseDouble(args[index+2]), args[index+3]);
 			} catch (NumberFormatException e) {
 				System.out.println("Illegal scale");
 			} catch (IOException e) {
@@ -119,7 +119,7 @@ public class Main {
 		index = argsLookup(args, "-convert");
 		if(index != -1){
 			try {
-				ImageUtils.resizeAndConvertImage(args[index+1], 1, args[index+2]);
+				ImageUtils.scaleAndConvertImage(args[index+1], 1, args[index+2]);
 			} catch (IOException e) {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){

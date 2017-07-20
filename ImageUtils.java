@@ -48,6 +48,8 @@ import javax.imageio.stream.ImageOutputStream;
  * 
  * @author Sifan Ye
  *
+ * @see For extended support: https://github.com/haraldk/TwelveMonkeys
+ * 
  */
 
 public class ImageUtils {
@@ -76,7 +78,7 @@ public class ImageUtils {
 	 * @param outPath The output path. Image format will be extracted from this
 	 * @throws IOException
 	 */
-	public static void resizeAndConvertImage(String inPath, double scale, String outPath) throws IOException{
+	public static void scaleAndConvertImage(String inPath, double scale, String outPath) throws IOException{
 		//Getting the input image
 		BufferedImage input = loadImage(inPath);	
 		//If file not found
@@ -84,28 +86,12 @@ public class ImageUtils {
 			System.out.println("Failed to load image");
 			return;
 		}		
-		
+
 		int outWidth = (int)(input.getWidth() * Math.sqrt(scale));
 		int outHeight = (int)(input.getHeight() * Math.sqrt(scale));
 		
 		//Creating the output image
-		BufferedImage output;
-		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
-			output = new BufferedImage(outWidth, outHeight, BufferedImage.TYPE_INT_RGB);
-		}else{
-			output = new BufferedImage(outWidth, outHeight, input.getType());
-		}
-		
-		Graphics2D g2d = output.createGraphics();
-		g2d.drawImage(input, 0, 0, outWidth, outHeight, null);
-	    g2d.dispose();
-	    
-	    //Writing the output file
-	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
-	    	System.out.println("Conversion Complete!");
-	    }else{
-	    	System.out.println("Output type not supported");
-	    }    
+		resizeAndConvertImage(input, outWidth, outHeight, outPath);
 	}
 	
 	/**
@@ -127,6 +113,19 @@ public class ImageUtils {
 		}
 
 		//Creating the output image
+		resizeAndConvertImage(input, width, height, outPath);
+	}
+	
+	/**
+	 * Method that creates an output image with an input image and specified height & width
+	 * 
+	 * @param input The input image
+	 * @param height The output image height
+	 * @param width The output image width
+	 * @param outPath The output path
+	 * @throws IOException 
+	 */
+	private static void resizeAndConvertImage(BufferedImage input, int width, int height, String outPath) throws IOException{
 		BufferedImage output;
 		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
 			output = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
