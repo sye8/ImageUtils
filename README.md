@@ -52,7 +52,7 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 * -resize [inPath] [width] [height] [maintain aspect ratio (true/false)] [outPath] resize and convert the image
 
-If user chooses to keep aspect ratio, then the image will be resized to best fill the space given, while keeping aspect ratio
+..If user chooses to keep aspect ratio, then the image will be resized to best fill the space given, while keeping aspect ratio
 
 * -convert [inPath] [outPath] converts the image
 
