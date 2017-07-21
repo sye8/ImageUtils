@@ -83,6 +83,8 @@ public class Main {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Insufficient arguments");
+			} catch (InterruptedException e){
+				e.printStackTrace();
 			}
 			return;
 		}
@@ -97,6 +99,8 @@ public class Main {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Insufficient arguments");
+			} catch (InterruptedException e){
+				e.printStackTrace();
 			}
 		}
 		//Image Conversion
@@ -108,6 +112,8 @@ public class Main {
 				System.out.println("Output path not found");
 			} catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Insufficient arguments");
+			} catch (InterruptedException e){
+				e.printStackTrace();
 			}
 			return;
 		}
