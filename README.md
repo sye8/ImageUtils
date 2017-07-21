@@ -46,14 +46,14 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 ## Main class command line tool (jar includes extended support) commands:
 
-* -supportedTypes: Show supported image types
+* '-supportedTypes': Show supported image types
 
-* -scale [inPath] [scale] [outPath] scale and convert and image
+* '-scale [inPath] [scale] [outPath]' scale and convert and image
 
-* -resize [inPath] [width] [height] [maintain aspect ratio (true/false)] [outPath] resize and convert the image
+* '-resize [inPath] [width] [height] [maintain aspect ratio (true/false)] [outPath]' resize and convert the image
 
   If user chooses to keep aspect ratio, then the image will be resized to best fill the space given, while keeping aspect ratio
 
-* -convert [inPath] [outPath] converts the image
+* '-convert [inPath] [outPath]' converts the image
 
-* -compress [inPath] [size in bytes] [outPath] compress image to maximum size under the required size in bytes
+* '-compress [inPath] [size in bytes] [outPath]' compress image to maximum size under the required size in bytes
