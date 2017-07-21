@@ -24,6 +24,25 @@ With extended support, supported formats are:
 
 - Supported write formats: [tiff, bmp, gif, tif, pgm, wbmp, jpeg, pam, pict, jpg, pct, iff, png, ppm, pnm, pbm]
 
+## Raw Support
+
+For camera raw image conversion to JPG, use [dcraw](https://www.cybercom.net/~dcoffin/dcraw/). 
+
+So far only UNIX support is included in this java project. 
+
+dcraw comes in C source code. 
+
+Compile with `gcc -o dcraw -O4 dcraw.c -lm -ljasper -ljpeg -llcms2` or `gcc -o dcraw -O4 dcraw.c -lm -DNODEPS`. 
+
+Please make sure the complied file has at least execute permission. 
+
+If not, please give permission to execute in terminal with `chmod 111 [compiled unit name]`. 
+
+If you are using this java source code, please place complied dcraw in the same directory as the complied class. 
+
+If you are using eclipse, please place complied dcraw under project directory. 
+
+If you are using the jar through terminal, please place complied dcraw in the working directory of your shell.
 
 ## Main class command line tool (jar includes extended support):
 
