@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
 
-Java class for image format conversion, compression and resizing, includes a command line tool
+Java class for image format conversion, compression and resizing. Includes a command line tool
 
 Only requires JRE (Java SE 1.8) System Library, provides support for formats below
 
