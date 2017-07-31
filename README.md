@@ -28,13 +28,21 @@ With extended support, supported formats are:
 
 For camera raw image conversion to JPG, use [dcraw](https://www.cybercom.net/~dcoffin/dcraw/). 
 
-So far only UNIX support is included in this java project. 
+So far only UNIX support is included in this java project. The current build uses dcraw v 9.27
 
 dcraw comes in C source code. 
 
 Compile with `gcc -o dcraw -O4 dcraw.c -lm -ljasper -ljpeg -llcms2` or `gcc -o dcraw -O4 dcraw.c -lm -DNODEPS`. 
 
 Compiled unit for Windows is avaliable [here](http://www.centrostudiprogressofotografico.it/en/dcraw/)
+
+For macOS users, dcraw is also avaliable on [Homebrew](https://brew.sh)
+
+- Install brew: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+- Install dcraw: `brew install dcraw`
+
+=======================================================================================================================
 
 Please make sure the complied file has at least execute permission. 
 
