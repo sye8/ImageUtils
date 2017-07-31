@@ -42,7 +42,7 @@ For macOS users, dcraw is also avaliable on [Homebrew](https://brew.sh)
 
 - Install dcraw: `brew install dcraw`
 
-=======================================================================================================================
+-----------------------------------------------------------------------------------------------------------------------
 
 Please make sure the complied file has at least execute permission. 
 
