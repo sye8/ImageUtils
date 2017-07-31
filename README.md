@@ -28,7 +28,7 @@ With extended support, supported formats are:
 
 For camera raw image conversion to JPG, use [dcraw](https://www.cybercom.net/~dcoffin/dcraw/). 
 
-So far only UNIX support is included in this java project. The current build uses dcraw v 9.27
+So far only UNIX support is included in this java project. The current build uses dcraw v9.27
 
 dcraw comes in C source code. 
 
@@ -42,7 +42,7 @@ For macOS users, dcraw is also avaliable on [Homebrew](https://brew.sh)
 
 - Install dcraw: `brew install dcraw`
 
------------------------------------------------------------------------------------------------------------------------
+
 
 Please make sure the complied file has at least execute permission. 
 
