@@ -279,6 +279,7 @@ public class ImageUtils {
 	 * Saves results at the same directory with name.thumb.jpg
 	 * 
 	 * @param inPath The path of the input image
+	 * @param systemType The type of the system, requires for command line execution
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	 */
