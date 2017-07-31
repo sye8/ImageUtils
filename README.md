@@ -42,9 +42,9 @@ For macOS users, dcraw is also avaliable on [Homebrew](https://brew.sh)
 
 - Install dcraw: `brew install dcraw`
 
-Please make sure the complied file has at least execute permission. 
+Please make sure the complied file has at least execute permission, and is named "dcraw" or "dcraw.exe"
 
-If not, please give permission to execute in terminal with `chmod 111 [compiled unit name]`. 
+To give permission, execute in terminal with `chmod 111 [compiled unit name]`. 
 
 If you are using this java source code, please place complied dcraw in the same directory as the complied class. 
 
@@ -54,7 +54,7 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 ## Main class command line tool (jar includes extended support) commands:
 
-* `-supportedTypes`: Show supported image types
+* `-supportedTypes` Show supported image types
 
 * `-scale [inPath] [scale] [outPath]` scale and convert and image
 
