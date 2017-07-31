@@ -53,7 +53,6 @@ import javax.imageio.stream.ImageOutputStream;
  * For extended support: https://github.com/haraldk/TwelveMonkeys 
  * 
  * For camera raw image conversion to JPG, use dcraw. 
- * So far only UNIX support is included. 
  * https://www.cybercom.net/~dcoffin/dcraw/ 
  * dcraw comes in C source code. 
  * Compile with "gcc -o dcraw -O4 dcraw.c -lm -ljasper -ljpeg -llcms2" or "gcc -o dcraw -O4 dcraw.c -lm -DNODEPS". 
@@ -92,15 +91,17 @@ public class ImageUtils {
 	 */
 	public static void scaleAndConvertImage(String inPath, double scale, String outPath) throws IOException, InterruptedException{
 		//Check if supported
-		int typeSupport = checkIfReadTypeIsSupported(inPath.substring(inPath.indexOf('.')+1));
+		int typeSupport = checkIfReadTypeIsSupported(inPath.substring(inPath.indexOf('.')+1).toLowerCase());
 		switch(typeSupport){
 			case 0:
 				break;
 			case 1:
+				//TryDCRaw
+				tryDCRaw(inPath, 1);
 				return;
 			case 2:
 				//TryDCRaw
-				tryDCRaw(inPath);
+				tryDCRaw(inPath, 2);
 				return;
 		}
 		//Getting the input image
@@ -132,15 +133,17 @@ public class ImageUtils {
 	 */
 	public static void resizeAndConvertImage(String inPath, int width, int height, boolean maintainAspectRatio, String outPath) throws IOException, InterruptedException{
 		//Check if supported
-		int typeSupport = checkIfReadTypeIsSupported(inPath.substring(inPath.indexOf('.')+1));
+		int typeSupport = checkIfReadTypeIsSupported(inPath.substring(inPath.indexOf('.')+1).toLowerCase());
 		switch(typeSupport){
 			case 0:
 				break;
 			case 1:
+				//TryDCRaw
+				tryDCRaw(inPath, 1);
 				return;
 			case 2:
 				//TryDCRaw
-				tryDCRaw(inPath);
+				tryDCRaw(inPath, 2);
 				return;
 		}
 		//Getting the input image
@@ -186,7 +189,7 @@ public class ImageUtils {
 	 */
 	private static void resizeAndConvertImage(BufferedImage input, int width, int height, String outPath) throws IOException{
 		BufferedImage output;
-		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).equals("jpg")){
+		if(input.getType() == 0 || outPath.substring(outPath.indexOf('.')+1).toLowerCase().equals("jpg")){
 			output = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		}else{
 			output = new BufferedImage(width, height, input.getType());
@@ -196,7 +199,7 @@ public class ImageUtils {
 	    g2d.dispose();
 	    
 	    //Writing the output file
-	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1), new File(outPath))){
+	    if(ImageIO.write(output, outPath.substring(outPath.indexOf('.')+1).toLowerCase(), new File(outPath))){
 	    	System.out.println("Conversion Complete!");
 	    }else{
 	    	System.out.println("Output type not supported");
@@ -214,7 +217,7 @@ public class ImageUtils {
 	 */
 	public static void imageCompression(String inPath, int size, String outPath) throws IllegalStateException, IOException{
 		//If the output format is not the same as input format
-		if(!(inPath.substring(inPath.indexOf('.')+1).equals(outPath.substring(outPath.indexOf('.')+1)))){
+		if(!(inPath.substring(inPath.indexOf('.')+1).toLowerCase().equals(outPath.substring(outPath.indexOf('.')+1).toLowerCase()))){
 			System.out.println("Output format must be the same as input format");
 			return;
 		}
@@ -228,7 +231,7 @@ public class ImageUtils {
 		BufferedImage input = ImageIO.read(in);
 		
 		//Get suitable Image Writer
-		Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName(outPath.substring(outPath.indexOf('.')+1));
+		Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName(outPath.substring(outPath.indexOf('.')+1).toLowerCase());
 		if(!iterator.hasNext()){
 			throw new IllegalStateException("Writers Not Found");
 		}
@@ -279,11 +282,16 @@ public class ImageUtils {
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	 */
-	private static void tryDCRaw(String inPath) throws InterruptedException, IOException{
+	private static void tryDCRaw(String inPath, int systemType) throws InterruptedException, IOException{
 		System.out.println("Trying DCRaw conversion to JPG");
+		System.out.println("Note: The ouput image will not be resized.");
 		List<String> commands = new ArrayList<String>();
 		File file;
-		file = new File("dcraw");
+		if(systemType == 1){
+			file = new File("dcraw.exe");
+		}else{
+			file = new File("dcraw");
+		}
 		commands.add(file.getAbsolutePath());
 		commands.add("-e");
 		commands.add(inPath);
@@ -364,10 +372,8 @@ public class ImageUtils {
 		String os = System.getProperty("os.name");
 		System.out.println("Your OS is: " + os);
 		if(os.toLowerCase().startsWith("windows")){
-			System.out.println("Sorry, this program doesn't support MS DOS command line yet");
 			return true;
 		}else{
-			System.out.println("You can try dcraw to decode raw images");
 			return false;
 		}
 	}
