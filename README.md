@@ -34,6 +34,8 @@ dcraw comes in C source code.
 
 Compile with `gcc -o dcraw -O4 dcraw.c -lm -ljasper -ljpeg -llcms2` or `gcc -o dcraw -O4 dcraw.c -lm -DNODEPS`. 
 
+Compiled unit for Windows is avaliable [here](http://www.centrostudiprogressofotografico.it/en/dcraw/)
+
 Please make sure the complied file has at least execute permission. 
 
 If not, please give permission to execute in terminal with `chmod 111 [compiled unit name]`. 
