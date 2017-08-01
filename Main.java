@@ -135,6 +135,18 @@ public class Main {
 			}
 			return;
 		}
+		//No argument present
+		System.out.println("\n \n \n \n \n");
+		System.out.println("Java Image Utilities \n");
+		System.out.println("Copyright (c) 2017 Sifan Ye [sye8 {at} u {dot} rochester {dot} edu]");
+		System.out.println("Licensed under the MIT License \n");
+		System.out.println("Commands list: ");
+		System.out.println("\t-supportedTypes: Show supported image types");
+		System.out.println("\t-scale [inPath] [scale] [outPath]: scale and convert and image");
+		System.out.println("\t-resize [inPath] [width] [height] [maintain aspect ratio (true/false)] [outPath]: resize and convert the image");
+		System.out.println("\t-convert [inPath] [outPath]: converts the image");
+		System.out.println("\t-compress [inPath] [size in bytes] [outPath]: compress image to maximum size under the required size in bytes \n");
+		System.out.println("Note: Compress doesn't convert the image \n \n \n");
 	}
 
 }
