@@ -54,7 +54,7 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 ## Main class command line tool (jar includes extended support) commands:
 
-To run in Terminal/CMD, run with java -jar [jar file path]. Requires JVM to be installed
+To run in Terminal/CMD, run with `java -jar [jar file path]`. Requires JVM to be installed
 
 **To see instructions, run with no arguments**
 
