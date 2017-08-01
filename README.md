@@ -56,6 +56,8 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 **To see instructions, run with no arguments**
 
+To run in Terminal/CMD, run with java -jar [jar file path]. Requires JVM to be installed
+
 * `-supportedTypes` Show supported image types
 
 * `-scale [inPath] [scale] [outPath]` scale and convert and image
