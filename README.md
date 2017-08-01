@@ -54,7 +54,7 @@ If you are using the jar through terminal, please place complied dcraw in the wo
 
 ## Main class command line tool (jar includes extended support) commands:
 
-** To see instructions, run with no arguments **
+**To see instructions, run with no arguments
 
 * `-supportedTypes` Show supported image types
 
